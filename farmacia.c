@@ -12,6 +12,7 @@
 
 #define TAM 12      /* quantidade de medicamentos (minimo exigido: 10) */
 #define TAM_NOME 40 /* tamanho maximo do nome de cada medicamento */
+#define LIMITE_ALERTA 30 /* ate quantos dias o medicamento e considerado critico */
 
 /* Descarta o restante da linha digitada (ate o Enter) */
 void limparEntrada(void) {
@@ -48,11 +49,21 @@ void cadastrarMedicamentos(char nomes[][TAM_NOME], int dias[], int n) {
     }
 }
 
-/* Mostra a lista de medicamentos com os dias para vencer */
+/* Mostra a lista de medicamentos com os dias para vencer e a situacao */
 void exibirEstoque(char nomes[][TAM_NOME], int dias[], int n) {
     int i;
+    printf("No  Medicamento             Dias  Situacao\n");
+    printf("--  ----------------------  ----  -------------------\n");
     for (i = 0; i < n; i++) {
-        printf("%2d) %-22s %4d dias\n", i + 1, nomes[i], dias[i]);
+        printf("%2d  %-22s  %4d  ", i + 1, nomes[i], dias[i]);
+        /* Condicional que classifica a urgencia de cada item */
+        if (dias[i] <= 7) {
+            printf("URGENTE - prioridade maxima\n");
+        } else if (dias[i] <= LIMITE_ALERTA) {
+            printf("ATENCAO - vender primeiro\n");
+        } else {
+            printf("OK\n");
+        }
     }
 }
 
@@ -60,15 +71,25 @@ void exibirEstoque(char nomes[][TAM_NOME], int dias[], int n) {
  * Bubble Sort: compara elementos vizinhos e troca quando estao fora de ordem.
  * crescente = 1 -> menos dias primeiro (prioridade de venda)
  * crescente = 0 -> mais dias primeiro
+ * Os ponteiros comparacoes e trocas recebem as contagens de operacoes.
  */
-void bubbleSort(char nomes[][TAM_NOME], int dias[], int n, int crescente) {
-    int i, j, auxDias, foraDeOrdem;
+void bubbleSort(char nomes[][TAM_NOME], int dias[], int n, int crescente,
+                int *comparacoes, int *trocas) {
+    int i, j, auxDias, foraDeOrdem, houveTroca;
     char auxNome[TAM_NOME];
+
+    *comparacoes = 0;
+    *trocas = 0;
 
     /* Laco externo: cada passada leva um elemento para sua posicao final */
     for (i = 0; i < n - 1; i++) {
-        /* Laco interno: percorre os pares vizinhos ainda nao ordenados */
+        houveTroca = 0;
+
+        /* Laco interno: percorre os pares vizinhos ainda nao ordenados.
+           A cada passada, os ultimos i elementos ja estao no lugar certo. */
         for (j = 0; j < n - 1 - i; j++) {
+            (*comparacoes)++;
+
             /* Comparacao entre elementos adjacentes conforme o criterio */
             if (crescente) {
                 foraDeOrdem = dias[j] > dias[j + 1];
@@ -86,7 +107,15 @@ void bubbleSort(char nomes[][TAM_NOME], int dias[], int n, int crescente) {
                 strcpy(auxNome, nomes[j]);
                 strcpy(nomes[j], nomes[j + 1]);
                 strcpy(nomes[j + 1], auxNome);
+
+                (*trocas)++;
+                houveTroca = 1;
             }
+        }
+
+        /* Otimizacao: se nenhuma troca ocorreu, o array ja esta ordenado */
+        if (!houveTroca) {
+            break;
         }
     }
 }
@@ -99,7 +128,7 @@ int main(void) {
         "Soro Fisiologico",    "Azitromicina 500mg", "Xarope Expectorante"
     };
     int dias[TAM] = {120, 15, 210, 45, 7, 300, 90, 3, 60, 180, 30, 21};
-    int opcaoDados, crescente;
+    int opcaoDados, crescente, comparacoes, trocas, i, criticos = 0;
 
     printf("==============================================\n");
     printf("   CONTROLE DE VALIDADE - FARMACIA\n");
@@ -119,11 +148,30 @@ int main(void) {
     printf("\n=== ANTES DA ORDENACAO ===\n");
     exibirEstoque(nomes, dias, TAM);
 
-    bubbleSort(nomes, dias, TAM, crescente);
+    bubbleSort(nomes, dias, TAM, crescente, &comparacoes, &trocas);
 
     printf("\n=== DEPOIS DA ORDENACAO (%s) ===\n",
            crescente ? "crescente" : "decrescente");
     exibirEstoque(nomes, dias, TAM);
+
+    /* Conta quantos medicamentos estao proximos do vencimento */
+    for (i = 0; i < TAM; i++) {
+        if (dias[i] <= LIMITE_ALERTA) {
+            criticos++;
+        }
+    }
+
+    printf("\n=== RESUMO ===\n");
+    printf("Comparacoes realizadas: %d\n", comparacoes);
+    printf("Trocas realizadas:      %d\n", trocas);
+    printf("Medicamentos vencendo em ate %d dias: %d\n", LIMITE_ALERTA, criticos);
+    if (crescente) {
+        printf("Menor prazo: %s (%d dias)\n", nomes[0], dias[0]);
+        printf("Maior prazo: %s (%d dias)\n", nomes[TAM - 1], dias[TAM - 1]);
+    } else {
+        printf("Maior prazo: %s (%d dias)\n", nomes[0], dias[0]);
+        printf("Menor prazo: %s (%d dias)\n", nomes[TAM - 1], dias[TAM - 1]);
+    }
 
     return 0;
 }
