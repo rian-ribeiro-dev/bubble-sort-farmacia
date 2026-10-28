@@ -1,0 +1,4 @@
+# Executaveis gerados pela compilacao
+farmacia
+farmacia.exe
+*.o
