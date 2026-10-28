@@ -9,10 +9,10 @@
 
 | Nome | Matrícula | GitHub |
 |------|-----------|--------|
-| Rian | _preencher_ | _@usuario_ |
-| _Integrante 2_ | _preencher_ | _@usuario_ |
-| _Integrante 3_ | _preencher_ | _@usuario_ |
-| _Integrante 4_ | _preencher_ | _@usuario_ |
+| Rian Do Nascimento Ribeiro | 47582006 | [@rian-ribeiro-dev](https://github.com/rian-ribeiro-dev) |
+| Jean Emanuel Alves de Morais | 47385804 | [@Jeanemanuel](https://github.com/Jeanemanuel) |
+| Emilly Lorrany Alves dos Santos | 46894993 | [@emillyy-cell](https://github.com/emillyy-cell) |
+| Alair Eloi de Araujo Neto | _a preencher_ | [@otencoding](https://github.com/otencoding) |
 
 ---
 
