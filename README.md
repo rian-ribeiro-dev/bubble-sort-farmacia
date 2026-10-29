@@ -1,22 +1,19 @@
-# 💊 Controle de Validade de Medicamentos — Bubble Sort em C
+Controle de Validade de Medicamentos — Bubble Sort em C
+Disciplina: Algoritmos e Pensamento Computacional
+Instituição: UDF — Centro Universitário do Distrito Federal
+Professora: Profa. Karla R. Sartin
+Atividade: Aplicação do Algoritmo Bubble Sort
 
-**Disciplina:** Algoritmos e Pensamento Computacional
-**Instituição:** UDF — Centro Universitário do Distrito Federal
-**Professora:** Profa. Karla R. Sartin
-**Atividade:** Aplicação do Algoritmo Bubble Sort
-
-## 👥 Integrantes
+Integrantes
 
 | Nome | Matrícula | GitHub |
 |------|-----------|--------|
 | Rian Do Nascimento Ribeiro | 47582006 | [@rian-ribeiro-dev](https://github.com/rian-ribeiro-dev) |
 | Jean Emanuel Alves de Morais | 47385804 | [@Jeanemanuel](https://github.com/Jeanemanuel) |
 | Emilly Lorrany Alves dos Santos | 46894993 | [@emillyy-cell](https://github.com/emillyy-cell) |
-| Alair Eloi de Araujo Neto | _a preencher_ | [@otencoding](https://github.com/otencoding) |
+| Alair Eloi de Araujo Neto |         | [@otencoding](https://github.com/otencoding) |
 
----
-
-## 📌 Problema do cotidiano
+Problema do cotidiano
 
 Uma farmácia tem dezenas de medicamentos no estoque, e cada lote tem uma data de validade diferente. Quando a equipe não sabe quais produtos vencem primeiro, acontece o seguinte:
 
@@ -26,19 +23,19 @@ Uma farmácia tem dezenas de medicamentos no estoque, e cada lote tem uma data d
 
 **Por que ordenar?** Com a lista ordenada pelos **dias que faltam para o vencimento**, o farmacêutico vê na hora quais itens precisam sair primeiro, ganhar promoção ou ser conferidos. Também fica fácil descobrir o menor e o maior prazo do estoque.
 
-## 🎯 Objetivo da aplicação
+Objetivo
 
 Desenvolver em C um programa que:
 
-1. guarde em **arrays** o nome de **12 medicamentos** e os dias que faltam para cada um vencer;
-2. mostre o estoque **antes** da ordenação;
-3. ordene os dados com o **Bubble Sort**, no critério escolhido pelo usuário (**crescente** ou **decrescente**);
-4. mostre o estoque **depois** da ordenação, com a situação de cada item (OK / ATENCAO / URGENTE);
+1. guarde em arrays o nome de 12 medicamentos e os dias que faltam para cada um vencer.
+2. mostre o estoque antes da ordenação.
+3. ordene os dados com o Bubble Sort, no critério escolhido pelo usuário (crescente ou decrescente).
+4. mostre o estoque depois da ordenação, com a situação de cada item (OK / ATENCAO / URGENTE).
 5. apresente um resumo com o número de comparações e trocas, a quantidade de itens críticos e os prazos extremos.
 
-## 🫧 Como o Bubble Sort funciona
+Como o Bubble Sort funciona
 
-O Bubble Sort (ordenação por bolha) **compara elementos vizinhos** do array e **troca os dois de lugar** quando estão na ordem errada. A cada passada completa, o maior valor (no critério crescente) "sobe" até o fim do array, como uma bolha subindo na água.
+O Bubble Sort (ordenação por bolha) compara elementos vizinhos do array e troca os dois de lugar quando estão na ordem errada. A cada passada completa, o maior valor (no critério crescente) "sobe" até o fim do array, como uma bolha subindo na água.
 
 ```
 Passada 1: [120, 15, 210, 45, ...]
@@ -62,7 +59,7 @@ No código ([`farmacia.c`](farmacia.c), função `bubbleSort`):
 
 > O programa **não** usa funções prontas de ordenação, como `qsort()`. Toda a ordenação é feita pelo Bubble Sort implementado no código.
 
-## ▶️ Como compilar e executar
+Como compilar e executar
 
 Pré-requisito: um compilador C (GCC, MinGW no Windows, Code::Blocks ou OnlineGDB).
 
@@ -88,7 +85,7 @@ farmacia.exe
 
 As entradas são validadas: se o usuário digitar uma opção inválida, o programa pede o valor de novo.
 
-## 💻 Exemplo de entrada e saída
+Exemplo de entrada e saída
 
 **Entrada:** `1` (estoque de exemplo) e `1` (crescente)
 
@@ -143,7 +140,7 @@ Menor prazo: Insulina NPH (3 dias)
 Maior prazo: Omeprazol 20mg (300 dias)
 ```
 
-## 🛠️ Tecnologias e ferramentas
+Tecnologias e ferramentas
 
 - **Linguagem C** (padrão C99), com as bibliotecas `stdio.h` e `string.h`
 - **GCC** para compilar
@@ -151,7 +148,7 @@ Maior prazo: Omeprazol 20mg (300 dias)
 - **Git** para controlar as versões
 - **GitHub** para hospedar o repositório e colaborar
 
-## 🗂️ Estrutura do repositório
+Estrutura do repositório
 
 ```
 .
@@ -160,7 +157,7 @@ Maior prazo: Omeprazol 20mg (300 dias)
 └── .gitignore   # ignora os executáveis gerados
 ```
 
-## 📝 Considerações finais
+ Considerações finais
 
 O projeto mostrou como um algoritmo simples, como o Bubble Sort, resolve um problema real de gestão de estoque. Durante o desenvolvimento, aplicamos:
 
