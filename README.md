@@ -1,10 +1,23 @@
-Controle de Validade de Medicamentos — Bubble Sort em C
-Disciplina: Algoritmos e Pensamento Computacional
-Instituição: UDF — Centro Universitário do Distrito Federal
-Professora: Profa. Karla R. Sartin
-Atividade: Aplicação do Algoritmo Bubble Sort
+# Controle de Validade de Medicamentos — Bubble Sort em C
 
-Integrantes
+![C](https://img.shields.io/badge/C-C99-00599C?logo=c&logoColor=white)
+![GCC](https://img.shields.io/badge/GCC-compilador-A42E2B?logo=gnu&logoColor=white)
+![Licença MIT](https://img.shields.io/badge/licen%C3%A7a-MIT-green)
+
+> Projeto acadêmico do **2º semestre de 2026** — Engenharia de Software, UDF.
+
+| | |
+|---|---|
+| **Disciplina** | Algoritmos e Pensamento Computacional |
+| **Instituição** | UDF — Centro Universitário do Distrito Federal |
+| **Professora** | Profa. Karla R. Sartin |
+| **Atividade** | Aplicação do Algoritmo Bubble Sort |
+
+## Visão geral
+
+Sistema de linha de comando que ordena o estoque de uma farmácia pelos **dias restantes até o vencimento** usando **Bubble Sort** implementado do zero (sem `qsort()`). Ele classifica cada item como **OK / ATENÇÃO / URGENTE** e gera um resumo com comparações, trocas e itens críticos, apoiando o princípio **PVPS** (*Primeiro que Vence, Primeiro que Sai*) e reduzindo perdas por vencimento.
+
+## Integrantes
 
 | Nome | Matrícula | GitHub |
 |------|-----------|--------|
@@ -13,7 +26,7 @@ Integrantes
 | Emilly Lorrany Alves dos Santos | 46894993 | [@emillyy-cell](https://github.com/emillyy-cell) |
 | Alair Eloi de Araujo Neto |         | [@otencoding](https://github.com/otencoding) |
 
-Problema do cotidiano
+## Problema do cotidiano
 
 Uma farmácia tem dezenas de medicamentos no estoque, e cada lote tem uma data de validade diferente. Quando a equipe não sabe quais produtos vencem primeiro, acontece o seguinte:
 
@@ -23,7 +36,7 @@ Uma farmácia tem dezenas de medicamentos no estoque, e cada lote tem uma data d
 
 **Por que ordenar?** Com a lista ordenada pelos **dias que faltam para o vencimento**, o farmacêutico vê na hora quais itens precisam sair primeiro, ganhar promoção ou ser conferidos. Também fica fácil descobrir o menor e o maior prazo do estoque.
 
-Objetivo
+## Objetivo
 
 Desenvolver em C um programa que:
 
@@ -33,7 +46,7 @@ Desenvolver em C um programa que:
 4. mostre o estoque depois da ordenação, com a situação de cada item (OK / ATENCAO / URGENTE).
 5. apresente um resumo com o número de comparações e trocas, a quantidade de itens críticos e os prazos extremos.
 
-Como o Bubble Sort funciona
+## Como o Bubble Sort funciona
 
 O Bubble Sort (ordenação por bolha) compara elementos vizinhos do array e troca os dois de lugar quando estão na ordem errada. A cada passada completa, o maior valor (no critério crescente) "sobe" até o fim do array, como uma bolha subindo na água.
 
@@ -59,11 +72,13 @@ No código ([`farmacia.c`](farmacia.c), função `bubbleSort`):
 
 > O programa **não** usa funções prontas de ordenação, como `qsort()`. Toda a ordenação é feita pelo Bubble Sort implementado no código.
 
-Como compilar e executar
+## Como compilar e executar
 
 Pré-requisito: um compilador C (GCC, MinGW no Windows, Code::Blocks ou OnlineGDB).
 
 ```bash
+git clone https://github.com/rian-ribeiro-dev/bubble-sort-farmacia.git
+cd bubble-sort-farmacia
 gcc -Wall -o farmacia farmacia.c
 ./farmacia
 ```
@@ -85,7 +100,13 @@ farmacia.exe
 
 As entradas são validadas: se o usuário digitar uma opção inválida, o programa pede o valor de novo.
 
-Exemplo de entrada e saída
+## Demonstração
+
+Captura de tela da execução no terminal (estoque de exemplo, ordenação crescente):
+
+![Execução do programa no terminal](assets/farmacia.png)
+
+### Exemplo de entrada e saída (texto)
 
 **Entrada:** `1` (estoque de exemplo) e `1` (crescente)
 
@@ -140,7 +161,7 @@ Menor prazo: Insulina NPH (3 dias)
 Maior prazo: Omeprazol 20mg (300 dias)
 ```
 
-Tecnologias e ferramentas
+## Tecnologias utilizadas
 
 - **Linguagem C** (padrão C99), com as bibliotecas `stdio.h` e `string.h`
 - **GCC** para compilar
@@ -148,16 +169,18 @@ Tecnologias e ferramentas
 - **Git** para controlar as versões
 - **GitHub** para hospedar o repositório e colaborar
 
-Estrutura do repositório
+## Estrutura do repositório
 
 ```
 .
-├── farmacia.c   # código-fonte da aplicação
-├── README.md    # documentação do projeto
-└── .gitignore   # ignora os executáveis gerados
+├── assets/farmacia.png  # captura de tela da execução
+├── farmacia.c           # código-fonte da aplicação
+├── .gitignore           # ignora executáveis e arquivos temporários
+├── LICENSE              # licença MIT
+└── README.md            # documentação do projeto
 ```
 
- Considerações finais
+## Considerações finais
 
 O projeto mostrou como um algoritmo simples, como o Bubble Sort, resolve um problema real de gestão de estoque. Durante o desenvolvimento, aplicamos:
 
@@ -168,3 +191,7 @@ O projeto mostrou como um algoritmo simples, como o Bubble Sort, resolve um prob
 - **versionamento com Git/GitHub**, com commits que registram cada etapa da evolução do código.
 
 Também percebemos uma limitação do Bubble Sort: ele é O(n²) e fica lento para estoques muito grandes. Nesses casos, algoritmos como Merge Sort ou Quick Sort seriam mais indicados. Para fins didáticos e listas pequenas, porém, ele é claro, fácil de entender e cumpre bem o objetivo.
+
+## Licença
+
+Distribuído sob a licença **MIT**. Veja o arquivo [LICENSE](LICENSE).

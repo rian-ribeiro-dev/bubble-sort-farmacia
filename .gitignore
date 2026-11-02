@@ -1,4 +1,25 @@
-# Executaveis gerados pela compilacao
-farmacia
-farmacia.exe
+# Executáveis e objetos gerados na compilação
 *.o
+*.obj
+*.exe
+*.out
+a.out
+
+# Pastas de build e saídas temporárias
+build/
+bin/
+site/
+saida.txt
+
+# Configurações de IDE e sistema
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Variáveis de ambiente / credenciais
+.env
+
+# Binário do projeto
+farmacia
